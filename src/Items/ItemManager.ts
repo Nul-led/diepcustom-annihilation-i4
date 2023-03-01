@@ -37,7 +37,7 @@ export class ItemManager {
     }
 
     public get wantedItems() {
-        return Math.ceil(this.game.clients.size / 2);
+        return 20//Math.ceil(this.game.clients.size / 2);
     }
 
     public tick() {
