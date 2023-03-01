@@ -2010,7 +2010,7 @@ const DevTankDefinitions: TankDefinition[] = [
                     sizeRatio: 1,
                     health: 1,
                     damage: 1,
-                    speed: 1,
+                    speed: 1.125,
                     scatterRate: 1,
                     lifeLength: 1,
                     absorbtionFactor: 1
@@ -2032,7 +2032,7 @@ const DevTankDefinitions: TankDefinition[] = [
                     sizeRatio: 1,
                     health: 1,
                     damage: 1,
-                    speed: 1,
+                    speed: 1.125,
                     scatterRate: 1,
                     lifeLength: 1,
                     absorbtionFactor: 1
@@ -2054,7 +2054,7 @@ const DevTankDefinitions: TankDefinition[] = [
                     sizeRatio: 1,
                     health: 1,
                     damage: 1,
-                    speed: 1,
+                    speed: 1.125,
                     scatterRate: 1,
                     lifeLength: 1,
                     absorbtionFactor: 1
@@ -2076,7 +2076,7 @@ const DevTankDefinitions: TankDefinition[] = [
                     sizeRatio: 1,
                     health: 1,
                     damage: 1,
-                    speed: 1,
+                    speed: 1.125,
                     scatterRate: 1,
                     lifeLength: 1,
                     absorbtionFactor: 1
@@ -2098,7 +2098,7 @@ const DevTankDefinitions: TankDefinition[] = [
                     sizeRatio: 1,
                     health: 1,
                     damage: 1,
-                    speed: 1,
+                    speed: 1.125,
                     scatterRate: 1,
                     lifeLength: 1,
                     absorbtionFactor: 1
@@ -2120,7 +2120,7 @@ const DevTankDefinitions: TankDefinition[] = [
                     sizeRatio: 1,
                     health: 1,
                     damage: 1,
-                    speed: 1,
+                    speed: 1.125,
                     scatterRate: 1,
                     lifeLength: 1,
                     absorbtionFactor: 1
@@ -2142,7 +2142,7 @@ const DevTankDefinitions: TankDefinition[] = [
                     sizeRatio: 1,
                     health: 1,
                     damage: 1,
-                    speed: 1,
+                    speed: 1.125,
                     scatterRate: 1,
                     lifeLength: 1,
                     absorbtionFactor: 1
@@ -2164,7 +2164,7 @@ const DevTankDefinitions: TankDefinition[] = [
                     sizeRatio: 1,
                     health: 1,
                     damage: 1,
-                    speed: 1,
+                    speed: 1.125,
                     scatterRate: 1,
                     lifeLength: 1,
                     absorbtionFactor: 1
@@ -2186,7 +2186,7 @@ const DevTankDefinitions: TankDefinition[] = [
                     sizeRatio: 1,
                     health: 1,
                     damage: 1,
-                    speed: 1,
+                    speed: 1.125,
                     scatterRate: 1,
                     lifeLength: 1,
                     absorbtionFactor: 1
@@ -2208,7 +2208,7 @@ const DevTankDefinitions: TankDefinition[] = [
                     sizeRatio: 1,
                     health: 1,
                     damage: 1,
-                    speed: 1,
+                    speed: 1.125,
                     scatterRate: 1,
                     lifeLength: 1,
                     absorbtionFactor: 1
@@ -2230,7 +2230,7 @@ const DevTankDefinitions: TankDefinition[] = [
                     sizeRatio: 1,
                     health: 1,
                     damage: 1,
-                    speed: 1,
+                    speed: 1.125,
                     scatterRate: 1,
                     lifeLength: 1,
                     absorbtionFactor: 1
@@ -2252,7 +2252,7 @@ const DevTankDefinitions: TankDefinition[] = [
                     sizeRatio: 1,
                     health: 1,
                     damage: 1,
-                    speed: 1,
+                    speed: 1.125,
                     scatterRate: 1,
                     lifeLength: 1,
                     absorbtionFactor: 1
@@ -2274,7 +2274,7 @@ const DevTankDefinitions: TankDefinition[] = [
                     sizeRatio: 1,
                     health: 1,
                     damage: 1,
-                    speed: 1,
+                    speed: 1.125,
                     scatterRate: 1,
                     lifeLength: 1,
                     absorbtionFactor: 1
@@ -2296,7 +2296,7 @@ const DevTankDefinitions: TankDefinition[] = [
                     sizeRatio: 1,
                     health: 1,
                     damage: 1,
-                    speed: 1,
+                    speed: 1.125,
                     scatterRate: 1,
                     lifeLength: 1,
                     absorbtionFactor: 1
@@ -2318,7 +2318,7 @@ const DevTankDefinitions: TankDefinition[] = [
                     sizeRatio: 1,
                     health: 1,
                     damage: 1,
-                    speed: 1,
+                    speed: 1.125,
                     scatterRate: 1,
                     lifeLength: 1,
                     absorbtionFactor: 1
@@ -2340,7 +2340,7 @@ const DevTankDefinitions: TankDefinition[] = [
                     sizeRatio: 1,
                     health: 1,
                     damage: 1,
-                    speed: 1,
+                    speed: 1.125,
                     scatterRate: 1,
                     lifeLength: 1,
                     absorbtionFactor: 1
