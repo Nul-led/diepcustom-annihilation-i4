@@ -38,7 +38,7 @@ export const enum DevTank {
     TheCroc = -13,
     Railgun = -14,
     Nightmare = -15,
-    Stackshot = -16,
+    TheSun = -16,
 };
 
 /**
@@ -1545,7 +1545,7 @@ const DevTankDefinitions: TankDefinition[] = [
                 angle: 0,
                 offset: 0,
                 size: 126,
-                width: 46,
+                width: 42,
                 delay: 0,
                 reload: 0.7,
                 recoil: 0.8,
@@ -1972,8 +1972,8 @@ const DevTankDefinitions: TankDefinition[] = [
         ]
     },
     {
-        id: DevTank.Stackshot,
-        name: "Stackshot",
+        id: DevTank.TheSun,
+        name: "The Sun",
         upgradeMessage: "",
         levelRequirement: 45,
         upgrades: [],
@@ -1995,11 +1995,11 @@ const DevTankDefinitions: TankDefinition[] = [
         borderWidth: 15,
         barrels: [
             {
-                angle: PI2 / 12 * 12,
+                angle: PI2 / 16 * 16,
                 offset: 0,
                 size: 126,
-                width: 46,
-                delay: 12 / 12,
+                width: 42,
+                delay: 16 / 16,
                 reload: 2,
                 recoil: 0.1,
                 isTrapezoid: false,
@@ -2017,11 +2017,11 @@ const DevTankDefinitions: TankDefinition[] = [
                 }
             },
             {
-                angle: PI2 / 12 * 11,
+                angle: PI2 / 16 * 15,
                 offset: 0,
                 size: 126,
-                width: 46,
-                delay: 11 / 12,
+                width: 42,
+                delay: 15 / 16,
                 reload: 2,
                 recoil: 0.1,
                 isTrapezoid: false,
@@ -2039,11 +2039,11 @@ const DevTankDefinitions: TankDefinition[] = [
                 }
             },
             {
-                angle: PI2 / 12 * 10,
+                angle: PI2 / 16 * 14,
                 offset: 0,
                 size: 126,
-                width: 46,
-                delay: 10 / 12,
+                width: 42,
+                delay: 14 / 16,
                 reload: 2,
                 recoil: 0.1,
                 isTrapezoid: false,
@@ -2061,11 +2061,11 @@ const DevTankDefinitions: TankDefinition[] = [
                 }
             },
             {
-                angle: PI2 / 12 * 9,
+                angle: PI2 / 16 * 13,
                 offset: 0,
                 size: 126,
-                width: 46,
-                delay: 9 / 12,
+                width: 42,
+                delay: 13 / 16,
                 reload: 2,
                 recoil: 0.1,
                 isTrapezoid: false,
@@ -2083,11 +2083,11 @@ const DevTankDefinitions: TankDefinition[] = [
                 }
             },
             {
-                angle: PI2 / 12 * 8,
+                angle: PI2 / 16 * 12,
                 offset: 0,
                 size: 126,
-                width: 46,
-                delay: 8 / 12,
+                width: 42,
+                delay: 12 / 16,
                 reload: 2,
                 recoil: 0.1,
                 isTrapezoid: false,
@@ -2105,11 +2105,11 @@ const DevTankDefinitions: TankDefinition[] = [
                 }
             },
             {
-                angle: PI2 / 12 * 7,
+                angle: PI2 / 16 * 11,
                 offset: 0,
                 size: 126,
-                width: 46,
-                delay: 7 / 12,
+                width: 42,
+                delay: 11 / 16,
                 reload: 2,
                 recoil: 0.1,
                 isTrapezoid: false,
@@ -2127,11 +2127,11 @@ const DevTankDefinitions: TankDefinition[] = [
                 }
             },
             {
-                angle: PI2 / 12 * 6,
+                angle: PI2 / 16 * 10,
                 offset: 0,
                 size: 126,
-                width: 46,
-                delay: 6 / 12,
+                width: 42,
+                delay: 10 / 16,
                 reload: 2,
                 recoil: 0.1,
                 isTrapezoid: false,
@@ -2149,11 +2149,11 @@ const DevTankDefinitions: TankDefinition[] = [
                 }
             },
             {
-                angle: PI2 / 12 * 5,
+                angle: PI2 / 16 * 9,
                 offset: 0,
                 size: 126,
-                width: 46,
-                delay: 5 / 12,
+                width: 42,
+                delay: 9 / 16,
                 reload: 2,
                 recoil: 0.1,
                 isTrapezoid: false,
@@ -2171,11 +2171,11 @@ const DevTankDefinitions: TankDefinition[] = [
                 }
             },
             {
-                angle: PI2 / 12 * 4,
+                angle: PI2 / 16 * 8,
                 offset: 0,
                 size: 126,
-                width: 46,
-                delay: 4 / 12,
+                width: 42,
+                delay: 8 / 16,
                 reload: 2,
                 recoil: 0.1,
                 isTrapezoid: false,
@@ -2193,11 +2193,11 @@ const DevTankDefinitions: TankDefinition[] = [
                 }
             },
             {
-                angle: PI2 / 12 * 3,
+                angle: PI2 / 16 * 7,
                 offset: 0,
                 size: 126,
-                width: 46,
-                delay: 3 / 12,
+                width: 42,
+                delay: 7 / 16,
                 reload: 2,
                 recoil: 0.1,
                 isTrapezoid: false,
@@ -2215,11 +2215,11 @@ const DevTankDefinitions: TankDefinition[] = [
                 }
             },
             {
-                angle: PI2 / 12 * 2,
+                angle: PI2 / 16 * 6,
                 offset: 0,
                 size: 126,
-                width: 46,
-                delay: 2 / 12,
+                width: 42,
+                delay: 6 / 16,
                 reload: 2,
                 recoil: 0.1,
                 isTrapezoid: false,
@@ -2237,11 +2237,99 @@ const DevTankDefinitions: TankDefinition[] = [
                 }
             },
             {
-                angle: PI2 / 12 * 1,
+                angle: PI2 / 16 * 5,
                 offset: 0,
                 size: 126,
-                width: 46,
-                delay: 1 / 12,
+                width: 42,
+                delay: 5 / 16,
+                reload: 2,
+                recoil: 0.1,
+                isTrapezoid: false,
+                trapezoidDirection: 0,
+                addon: null,
+                bullet: {
+                    type: "bullet",
+                    sizeRatio: 1,
+                    health: 1,
+                    damage: 1,
+                    speed: 1,
+                    scatterRate: 1,
+                    lifeLength: 1,
+                    absorbtionFactor: 1
+                }
+            },
+            {
+                angle: PI2 / 16 * 4,
+                offset: 0,
+                size: 126,
+                width: 42,
+                delay: 4 / 16,
+                reload: 2,
+                recoil: 0.1,
+                isTrapezoid: false,
+                trapezoidDirection: 0,
+                addon: null,
+                bullet: {
+                    type: "bullet",
+                    sizeRatio: 1,
+                    health: 1,
+                    damage: 1,
+                    speed: 1,
+                    scatterRate: 1,
+                    lifeLength: 1,
+                    absorbtionFactor: 1
+                }
+            },
+            {
+                angle: PI2 / 16 * 3,
+                offset: 0,
+                size: 126,
+                width: 42,
+                delay: 3 / 16,
+                reload: 2,
+                recoil: 0.1,
+                isTrapezoid: false,
+                trapezoidDirection: 0,
+                addon: null,
+                bullet: {
+                    type: "bullet",
+                    sizeRatio: 1,
+                    health: 1,
+                    damage: 1,
+                    speed: 1,
+                    scatterRate: 1,
+                    lifeLength: 1,
+                    absorbtionFactor: 1
+                }
+            },
+            {
+                angle: PI2 / 16 * 2,
+                offset: 0,
+                size: 126,
+                width: 42,
+                delay: 2 / 16,
+                reload: 2,
+                recoil: 0.1,
+                isTrapezoid: false,
+                trapezoidDirection: 0,
+                addon: null,
+                bullet: {
+                    type: "bullet",
+                    sizeRatio: 1,
+                    health: 1,
+                    damage: 1,
+                    speed: 1,
+                    scatterRate: 1,
+                    lifeLength: 1,
+                    absorbtionFactor: 1
+                }
+            },
+            {
+                angle: PI2 / 16 * 1,
+                offset: 0,
+                size: 126,
+                width: 42,
+                delay: 1 / 16,
                 reload: 2,
                 recoil: 0.1,
                 isTrapezoid: false,
