@@ -141,7 +141,7 @@ const ItemDefinitions: Record<ItemId, ItemDefinition> = {
         rarityName: RarityName.Rare,
         onUse: (client: Client, slot: number) => {
             if(!client.camera?.cameraData.player || !(client.camera.cameraData.player instanceof TankBody)) return;
-            if(client.fovEffect >= 1) return client.notify("Unable to increase accuracy any further");
+            if(client.accuracyEffect >= 1) return client.notify("Unable to increase accuracy any further");
             client.accuracyEffect += 0.25;
             client.inventory.deleteItem(slot);
         }

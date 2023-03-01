@@ -313,6 +313,7 @@ export default class TankBody extends LivingEntity implements BarrelBase {
             }
 
             if(this.cameraEntity.client.sacrificingEffect) --this.cameraEntity.client.sacrificingEffect;
+            if(this.cameraEntity.client.reloadEffect) --this.cameraEntity.client.reloadEffect;
             this.cameraEntity.client.droneSpawner.tick(this);
         }
 

@@ -58,7 +58,6 @@ export class ShootCycle {
     public tick() {
         let reloadTime = this.barrelEntity.tank.reloadTime * this.barrelEntity.definition.reload;
         if((this.barrelEntity.tank.cameraEntity as ClientCamera)?.client?.reloadEffect) {
-            (this.barrelEntity.tank.cameraEntity as ClientCamera).client.reloadEffect--;
             reloadTime /= 2;
         }
 
