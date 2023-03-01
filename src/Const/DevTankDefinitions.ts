@@ -1995,11 +1995,11 @@ const DevTankDefinitions: TankDefinition[] = [
         borderWidth: 15,
         barrels: [
             {
-                angle: PI2 / 14 * 5,
+                angle: PI2 / 12 * 12,
                 offset: 0,
                 size: 126,
                 width: 46,
-                delay: 1.3,
+                delay: 12 / 12,
                 reload: 2,
                 recoil: 0.1,
                 isTrapezoid: false,
@@ -2017,11 +2017,11 @@ const DevTankDefinitions: TankDefinition[] = [
                 }
             },
             {
-                angle: PI2 / 14 * -5,
+                angle: PI2 / 12 * 11,
                 offset: 0,
                 size: 126,
                 width: 46,
-                delay: 0,
+                delay: 11 / 12,
                 reload: 2,
                 recoil: 0.1,
                 isTrapezoid: false,
@@ -2039,11 +2039,11 @@ const DevTankDefinitions: TankDefinition[] = [
                 }
             },
             {
-                angle: PI2 / 14 * -4,
+                angle: PI2 / 12 * 10,
                 offset: 0,
                 size: 126,
                 width: 46,
-                delay: 0.13,
+                delay: 10 / 12,
                 reload: 2,
                 recoil: 0.1,
                 isTrapezoid: false,
@@ -2061,11 +2061,11 @@ const DevTankDefinitions: TankDefinition[] = [
                 }
             },
             {
-                angle: PI2 / 14 * 4,
+                angle: PI2 / 12 * 9,
                 offset: 0,
                 size: 126,
                 width: 46,
-                delay: 1.17,
+                delay: 9 / 12,
                 reload: 2,
                 recoil: 0.1,
                 isTrapezoid: false,
@@ -2083,11 +2083,11 @@ const DevTankDefinitions: TankDefinition[] = [
                 }
             },
             {
-                angle: PI2 / 14 * -3,
+                angle: PI2 / 12 * 8,
                 offset: 0,
                 size: 126,
                 width: 46,
-                delay: 0.26,
+                delay: 8 / 12,
                 reload: 2,
                 recoil: 0.1,
                 isTrapezoid: false,
@@ -2105,11 +2105,11 @@ const DevTankDefinitions: TankDefinition[] = [
                 }
             },
             {
-                angle: PI2 / 14 * 3,
+                angle: PI2 / 12 * 7,
                 offset: 0,
                 size: 126,
                 width: 46,
-                delay: 1.04,
+                delay: 7 / 12,
                 reload: 2,
                 recoil: 0.1,
                 isTrapezoid: false,
@@ -2127,11 +2127,11 @@ const DevTankDefinitions: TankDefinition[] = [
                 }
             },
             {
-                angle: PI2 / 14 * -2,
+                angle: PI2 / 12 * 6,
                 offset: 0,
                 size: 126,
                 width: 46,
-                delay: 0.39,
+                delay: 6 / 12,
                 reload: 2,
                 recoil: 0.1,
                 isTrapezoid: false,
@@ -2149,11 +2149,11 @@ const DevTankDefinitions: TankDefinition[] = [
                 }
             },
             {
-                angle: PI2 / 14 * 2,
+                angle: PI2 / 12 * 5,
                 offset: 0,
                 size: 126,
                 width: 46,
-                delay: 0.91,
+                delay: 5 / 12,
                 reload: 2,
                 recoil: 0.1,
                 isTrapezoid: false,
@@ -2171,11 +2171,11 @@ const DevTankDefinitions: TankDefinition[] = [
                 }
             },
             {
-                angle: PI2 / 14 * -1,
+                angle: PI2 / 12 * 4,
                 offset: 0,
                 size: 126,
                 width: 46,
-                delay: 0.52,
+                delay: 4 / 12,
                 reload: 2,
                 recoil: 0.1,
                 isTrapezoid: false,
@@ -2193,11 +2193,11 @@ const DevTankDefinitions: TankDefinition[] = [
                 }
             },
             {
-                angle: PI2 / 14 * 1,
+                angle: PI2 / 12 * 3,
                 offset: 0,
                 size: 126,
                 width: 46,
-                delay: 0.78,
+                delay: 3 / 12,
                 reload: 2,
                 recoil: 0.1,
                 isTrapezoid: false,
@@ -2215,11 +2215,11 @@ const DevTankDefinitions: TankDefinition[] = [
                 }
             },
             {
-                angle: PI2 / 14 * 0,
+                angle: PI2 / 12 * 2,
                 offset: 0,
                 size: 126,
                 width: 46,
-                delay: 0.65,
+                delay: 2 / 12,
                 reload: 2,
                 recoil: 0.1,
                 isTrapezoid: false,
@@ -2235,7 +2235,29 @@ const DevTankDefinitions: TankDefinition[] = [
                     lifeLength: 1,
                     absorbtionFactor: 1
                 }
-            }
+            },
+            {
+                angle: PI2 / 12 * 1,
+                offset: 0,
+                size: 126,
+                width: 46,
+                delay: 1 / 12,
+                reload: 2,
+                recoil: 0.1,
+                isTrapezoid: false,
+                trapezoidDirection: 0,
+                addon: null,
+                bullet: {
+                    type: "bullet",
+                    sizeRatio: 1,
+                    health: 1,
+                    damage: 1,
+                    speed: 1,
+                    scatterRate: 1,
+                    lifeLength: 1,
+                    absorbtionFactor: 1
+                }
+            },
         ],
         stats: [
             {
