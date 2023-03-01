@@ -240,7 +240,7 @@ const DevTankDefinitions: TankDefinition[] = [
             {
                 angle: 0,
                 delay: 0,
-                size: 95,
+                size: 100,
                 offset: 0,
                 recoil: 20,
                 addon: null,
@@ -1544,7 +1544,7 @@ const DevTankDefinitions: TankDefinition[] = [
             {
                 angle: 0,
                 offset: 0,
-                size: 95,
+                size: 126,
                 width: 42,
                 delay: 0,
                 reload: 0.7,
@@ -1997,7 +1997,7 @@ const DevTankDefinitions: TankDefinition[] = [
             {
                 angle: PI2 / 14 * 5,
                 offset: 0,
-                size: 95,
+                size: 126,
                 width: 42,
                 delay: 1.3,
                 reload: 2,
@@ -2019,7 +2019,7 @@ const DevTankDefinitions: TankDefinition[] = [
             {
                 angle: PI2 / 14 * -5,
                 offset: 0,
-                size: 95,
+                size: 126,
                 width: 42,
                 delay: 0,
                 reload: 2,
@@ -2041,7 +2041,7 @@ const DevTankDefinitions: TankDefinition[] = [
             {
                 angle: PI2 / 14 * -4,
                 offset: 0,
-                size: 95,
+                size: 126,
                 width: 42,
                 delay: 0.13,
                 reload: 2,
@@ -2063,7 +2063,7 @@ const DevTankDefinitions: TankDefinition[] = [
             {
                 angle: PI2 / 14 * 4,
                 offset: 0,
-                size: 95,
+                size: 126,
                 width: 42,
                 delay: 1.17,
                 reload: 2,
@@ -2085,7 +2085,7 @@ const DevTankDefinitions: TankDefinition[] = [
             {
                 angle: PI2 / 14 * -3,
                 offset: 0,
-                size: 95,
+                size: 126,
                 width: 42,
                 delay: 0.26,
                 reload: 2,
@@ -2107,7 +2107,7 @@ const DevTankDefinitions: TankDefinition[] = [
             {
                 angle: PI2 / 14 * 3,
                 offset: 0,
-                size: 95,
+                size: 126,
                 width: 42,
                 delay: 1.04,
                 reload: 2,
@@ -2129,7 +2129,7 @@ const DevTankDefinitions: TankDefinition[] = [
             {
                 angle: PI2 / 14 * -2,
                 offset: 0,
-                size: 95,
+                size: 126,
                 width: 42,
                 delay: 0.39,
                 reload: 2,
@@ -2151,7 +2151,7 @@ const DevTankDefinitions: TankDefinition[] = [
             {
                 angle: PI2 / 14 * 2,
                 offset: 0,
-                size: 95,
+                size: 126,
                 width: 42,
                 delay: 0.91,
                 reload: 2,
@@ -2173,7 +2173,7 @@ const DevTankDefinitions: TankDefinition[] = [
             {
                 angle: PI2 / 14 * -1,
                 offset: 0,
-                size: 95,
+                size: 126,
                 width: 42,
                 delay: 0.52,
                 reload: 2,
@@ -2195,7 +2195,7 @@ const DevTankDefinitions: TankDefinition[] = [
             {
                 angle: PI2 / 14 * 1,
                 offset: 0,
-                size: 95,
+                size: 126,
                 width: 42,
                 delay: 0.78,
                 reload: 2,
@@ -2217,7 +2217,7 @@ const DevTankDefinitions: TankDefinition[] = [
             {
                 angle: PI2 / 14 * 0,
                 offset: 0,
-                size: 95,
+                size: 126,
                 width: 42,
                 delay: 0.65,
                 reload: 2,
