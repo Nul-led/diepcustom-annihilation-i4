@@ -1,5 +1,6 @@
 import Client from "../Client";
 import { tps } from "../config";
+import { DevTank } from "../Const/DevTankDefinitions";
 import TankBody from "../Entity/Tank/TankBody";
 import { EntityStateFlags } from "../Native/Entity";
 import Item from "./Item";
@@ -13,7 +14,7 @@ export enum RarityName {
 
 export enum ItemName {
     transformTank           = "Tank Transform",
-    droneSpawner            = "2 Permanent Drones",
+    droneSpawner            = "2 Respawning Drones",
     additionalStats         = "1 Permanent Stat",
     invulnerability         = "20s God Mode",
     
@@ -21,7 +22,7 @@ export enum ItemName {
     reloadAmplifier         = "30s 1.5x Reload",
     sacrificingAmplifier    = "30s 2x Sacrificing",
     healthAmplifier         = "25% Health Boost",
-    fovAmplifier            = "25% FoV Boost",
+    fovAmplifier            = "10% FoV Boost",
     accuracyAmplifier       = "25% Bullet Accuracy",
 
     absoption               = "30% Absorption",
@@ -65,7 +66,12 @@ const ItemDefinitions: Record<ItemId, ItemDefinition> = {
     "0": {
         name: ItemName.transformTank,
         rarityName: RarityName.Epic,
+        onPickup: (client: Client, item: Item) => {
+            client.notify("You may now use this item to transform to the special tank 'The Sun'. This item has unlimited uses.");
+        },
         onUse: (client: Client, slot: number) => {
+            if(!client.camera?.cameraData.player || !(client.camera.cameraData.player instanceof TankBody)) return;
+            client.camera.cameraData.player.setTank(DevTank.TheSun);
         }
     },
     "1": {
@@ -74,7 +80,7 @@ const ItemDefinitions: Record<ItemId, ItemDefinition> = {
         onUse: (client: Client, slot: number) => {
             if(!client.camera?.cameraData.player || !(client.camera.cameraData.player instanceof TankBody)) return;
             client.droneSpawner.wantedDrones += 2;
-            client.notify("You summoned two drones, they will keep respawning, this effect is permanent until you disconnect.");
+            client.notify("You summoned two drones, they will keep respawning, this effect is permanent until you die.");
             client.inventory.deleteItem(slot);
         }
     },

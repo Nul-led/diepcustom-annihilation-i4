@@ -256,6 +256,7 @@ export default class TankBody extends LivingEntity implements BarrelBase {
             this.cameraEntity.client.fovEffect = 0;
             this.cameraEntity.client.invisibilityEffect = 0;
             this.cameraEntity.client.sacrificingEffect = 0;
+            this.cameraEntity.client.droneSpawner.wantedDrones = 0;
             this.cameraEntity.client.inventory.sendInventoryUpdate();
         }
     }
