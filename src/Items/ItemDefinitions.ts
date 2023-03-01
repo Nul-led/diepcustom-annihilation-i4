@@ -15,10 +15,10 @@ export enum ItemName {
     transformTank           = "Tank Transform",
     droneSpawner            = "2 Permanent Drones",
     additionalStats         = "1 Permanent Stat",
-    invulnerability         = "20s Godmode",
+    invulnerability         = "20s God Mode",
     
-    damageAmplifier         = "30s 2x Damage",
-    reloadAmplifier         = "30s 2x Reload",
+    damageAmplifier         = "30s 1.5x Damage",
+    reloadAmplifier         = "30s 1.5x Reload",
     sacrificingAmplifier    = "30s 2x Sacrificing",
     healthAmplifier         = "25% Health Boost",
     fovAmplifier            = "25% FoV Boost",
@@ -131,7 +131,7 @@ const ItemDefinitions: Record<ItemId, ItemDefinition> = {
         onUse: (client: Client, slot: number) => {
             if(!client.camera?.cameraData.player || !(client.camera.cameraData.player instanceof TankBody)) return;
             if(client.fovEffect >= 0.5) return client.notify("Unable to increase fov any further");
-            client.fovEffect += 0.25;
+            client.fovEffect += 0.10;
             client.camera.setFieldFactor(client.camera.cameraData.player.definition.fieldFactor);
             client.inventory.deleteItem(slot);
         }
