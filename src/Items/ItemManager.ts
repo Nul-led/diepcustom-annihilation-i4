@@ -22,9 +22,9 @@ export class ItemManager {
     public spawnItem(): Item {
         const r = Math.random();
         let item;
-        if(r < 0.05) {
+        if(r < 0.2) {
             item = new Item(this.game, EPIC_ITEMS[0 | Math.random() * EPIC_ITEMS.length]);
-        } else if(r < 0.3) {
+        } else if(r < 0.5) {
             item = new Item(this.game, RARE_ITEMS[0 | Math.random() * RARE_ITEMS.length]);
         } else {
             item = new Item(this.game, COMMON_ITEMS[0 | Math.random() * COMMON_ITEMS.length]);
@@ -37,7 +37,7 @@ export class ItemManager {
     }
 
     public get wantedItems() {
-        return Math.ceil(this.game.clients.size / 2);
+        return 50;//Math.ceil(this.game.clients.size / 2);
     }
 
     public tick() {
