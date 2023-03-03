@@ -190,7 +190,8 @@ export const enum ClientBound {
     PlayerCount     = 0xA,
     ProofOfWork     = 0xB,
     SetInventory    = 30,
-    SetSlot         = 31
+    SetSlot         = 31,
+    SetScoreboard   = 32,
 }
 
 /**

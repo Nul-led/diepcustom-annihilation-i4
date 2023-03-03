@@ -43,6 +43,7 @@ import FactoryTestArena from "./Gamemodes/Misc/FactoryTest";
 import BallArena from "./Gamemodes/Misc/Ball";
 import MazeArena from "./Gamemodes/Maze";
 import EventArena from "./Gamemodes/Event";
+import { writeFileSync } from "fs";
 
 
 /**
@@ -110,7 +111,8 @@ export default class GameServer {
     /** Inner WebSocket Server. */
     private wss: Server;
 
-
+    public scoreboard: any[] = require("../data/scoreboard.json");
+    
     /** Info on limits
      * The server caps players per IP to 4
      * The server caps players per discord account to 2
@@ -232,6 +234,24 @@ export default class GameServer {
     /** Broadcasts a player count packet. */
     public broadcastPlayerCount() {
         this.broadcast().vu(ClientBound.PlayerCount).vu(GameServer.globalPlayerCount).send();
+    }
+
+    public updateGlobalScoreboard(entry: any) {
+        const existingEntryIdx = this.scoreboard.findIndex(({ name }) => name === entry.name);
+        if(existingEntryIdx === -1) {
+            this.scoreboard.push(entry);
+            this.scoreboard.sort((a1, a2) => a2.score - a1.score);
+            if(this.scoreboard.length > 3) this.scoreboard.length = 3;
+        } else {
+            if(this.scoreboard[existingEntryIdx].score > entry.score) return;
+            this.scoreboard[existingEntryIdx].score = entry.score;
+            this.scoreboard.sort((a1, a2) => a2.score - a1.score);
+        }
+
+        writeFileSync("./data/scoreboard.json", JSON.stringify(this.scoreboard));
+        for(const client of this.clients) {
+            client.sendScoreboard(client.isShowingGlobalScoreboard);
+        }
     }
 
     /** Ends the game instance. */

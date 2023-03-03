@@ -729,6 +729,36 @@ class InventoryHandler {
     }
 }
 
+Module.setScoreboard = view => {
+    const el = document.getElementById("scoreboard");
+    const isEnabled = view[1];
+    if(!isEnabled) {
+        el.style.display = "none";
+        return;
+    }
+    el.style.display = "flex";
+    el.innerHTML = "Scoreboard";
+
+    const data = JSON.parse(new TextDecoder().decode(new Uint8Array(view.slice(2, view.length - 1))));
+    
+    for(let i = 0; i < data.length; ++i) {
+        const entryEl = document.createElement("div");
+        const imgEl = document.createElement("img");
+        const nameEl = document.createElement("span");
+
+        entryEl.classList.add("entry");
+
+        imgEl.src = SCOREBOARD_ICON[i];
+        nameEl.style.color = SCOREBOARD_COLOR[i];
+        nameEl.appendChild(document.createTextNode(data[i]));
+
+        entryEl.appendChild(imgEl);
+        entryEl.appendChild(nameEl);
+        el.appendChild(entryEl);
+    }
+
+};
+
 // Part of the original emscripten bootstrap
 class ASMConsts {
     static createCanvasCtxWithAlpha(canvasId, alpha) {
@@ -1345,6 +1375,9 @@ class ASMConsts {
                 }
                 case 31: {
                     return InventoryHandler.setSlot(view);
+                }
+                case 32: {
+                    return Module.setScoreboard(view);
                 }
             }
             const ptr = Module.exports.malloc(view.length);

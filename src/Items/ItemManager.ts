@@ -29,15 +29,15 @@ export class ItemManager {
         } else {
             item = new Item(this.game, COMMON_ITEMS[0 | Math.random() * COMMON_ITEMS.length]);
         }
-        const offsetX = Math.random() * this.arena.width / 4;
-        const offsetY = Math.random() * this.arena.height / 4;
+        const offsetX = Math.random() * this.arena.width / 3;
+        const offsetY = Math.random() * this.arena.height / 3;
         item.positionData.x = Math.random() > 0.5 ? offsetX : -offsetX;
         item.positionData.y = Math.random() > 0.5 ? offsetY : -offsetY;
         return item;
     }
 
     public get wantedItems() {
-        return 20//Math.ceil(this.game.clients.size / 2);
+        return Math.ceil(this.game.clients.size / 2);
     }
 
     public tick() {

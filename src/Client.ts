@@ -156,7 +156,7 @@ export default class Client {
     public accuracyEffect: number = 0;
     public sacrificingEffect: number = 0;
     public droneSpawner: DroneSpawner;
-
+    public isShowingGlobalScoreboard: boolean = false;
 
     /** Returns a new writer stream connected to the socket. */
     public write() {
@@ -468,6 +468,7 @@ export default class Client {
             case ServerBound.ToRespawn:
                 // Doesn't matter if the player is alive or not in real diep.
                 camera.cameraData.flags &= ~CameraFlags.showingDeathStats;
+                this.sendScoreboard(false);
                 // if (this.game.arena.arenaState !== ArenaState.OPEN) return this.terminate();
                 return;
             case ServerBound.TakeTank: {
@@ -544,6 +545,20 @@ export default class Client {
         return this.devCheatsUsed;
     }
 
+    public sendScoreboard(doShow: boolean) {
+        this.isShowingGlobalScoreboard = doShow;
+        if(doShow) {
+            return this.write()
+                .u8(ClientBound.SetScoreboard)
+                .u8(1)
+                .stringNT(JSON.stringify(this.game.scoreboard.map(({ name, score }) => `${name} - ${Intl.NumberFormat('en-US', {notation: "compact", maximumFractionDigits: 1 }).format(score).toLowerCase()}`)))
+                .send();
+        }
+        this.write()
+            .u8(ClientBound.SetScoreboard)
+            .u8(0)
+            .send();
+    }
     
     /** Attempts possession of an AI */
     public possess(ai: AI) {

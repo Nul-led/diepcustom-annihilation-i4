@@ -38,7 +38,7 @@ export const enum DevTank {
     TheCroc = -13,
     Railgun = -14,
     Nightmare = -15,
-    TheSun = -16,
+    Vortex = -16,
 };
 
 /**
@@ -1972,8 +1972,8 @@ const DevTankDefinitions: TankDefinition[] = [
         ]
     },
     {
-        id: DevTank.TheSun,
-        name: "The Sun",
+        id: DevTank.Vortex,
+        name: "Vortex",
         upgradeMessage: "",
         levelRequirement: 45,
         upgrades: [],

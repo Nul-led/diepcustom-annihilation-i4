@@ -238,27 +238,29 @@ export default class TankBody extends LivingEntity implements BarrelBase {
             if (this.cameraEntity.cameraData.player === this) {
                 this.cameraEntity.cameraData.deathTick = this.game.tick;
                 this.cameraEntity.cameraData.respawnLevel = Math.min(Math.max(this.cameraEntity.cameraData.values.level - 1, 1), Math.floor(Math.sqrt(this.cameraEntity.cameraData.values.level) * 3.2796));
+                if(!this.game.scoreboard.length || this.game.scoreboard[this.game.scoreboard.length - 1].score < this.cameraEntity.cameraData.score) this.game.updateGlobalScoreboard({ name: this.nameData.name, score: this.cameraEntity.cameraData.score });
             }
 
             // Wipe this nonsense
             this.barrels = [];
             this.addons = [];
+
+            if(this.cameraEntity instanceof ClientCamera) {
+                this.cameraEntity.client.absorptionEffect = 0;
+                this.cameraEntity.client.accuracyEffect = 0;
+                this.cameraEntity.client.damageEffect = 0;
+                this.cameraEntity.client.healthEffect = 0;
+                this.cameraEntity.client.reloadEffect = 0;
+                this.cameraEntity.client.invulnerabilityEffect = 0;
+                this.cameraEntity.client.fovEffect = 0;
+                this.cameraEntity.client.invisibilityEffect = 0;
+                this.cameraEntity.client.sacrificingEffect = 0;
+                this.cameraEntity.client.droneSpawner.wantedDrones = 0;
+                this.cameraEntity.client.inventory.sendInventoryUpdate(false);
+                this.cameraEntity.client.sendScoreboard(true);
+            }
         }
         super.destroy(animate);
-        
-        if(this.cameraEntity instanceof ClientCamera) {
-            this.cameraEntity.client.absorptionEffect = 0;
-            this.cameraEntity.client.accuracyEffect = 0;
-            this.cameraEntity.client.damageEffect = 0;
-            this.cameraEntity.client.healthEffect = 0;
-            this.cameraEntity.client.reloadEffect = 0;
-            this.cameraEntity.client.invulnerabilityEffect = 0;
-            this.cameraEntity.client.fovEffect = 0;
-            this.cameraEntity.client.invisibilityEffect = 0;
-            this.cameraEntity.client.sacrificingEffect = 0;
-            this.cameraEntity.client.droneSpawner.wantedDrones = 0;
-            this.cameraEntity.client.inventory.sendInventoryUpdate();
-        }
     }
 
     public tick(tick: number) {

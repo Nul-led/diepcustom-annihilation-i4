@@ -22,7 +22,6 @@ import * as WebSocket from "ws";
 import * as config from "./config"
 import * as util from "./util";
 import GameServer from "./Game";
-import auth from "./Auth";
 import TankDefinitions from "./Const/TankDefinitions";
 import { commandDefinitions } from "./Const/Commands";
 import { ColorsHexCode } from "./Const/Enums";
@@ -35,6 +34,7 @@ if (ENABLE_API) util.log(`Rest API hosting is enabled and is now being hosted at
 if (ENABLE_CLIENT) util.log(`Client hosting is enabled and is now being hosted from ${config.clientLocation}`);
 
 const games: GameServer[] = [];
+const analytics: any[] = require("../data/analytics.json");
 
 const server = http.createServer( (req, res) => {
     util.saveToVLog("Incoming request to " + req.url);
@@ -97,6 +97,7 @@ const server = http.createServer( (req, res) => {
     } 
 });
 
+
 const wss = new WebSocket.Server({
     server,
     maxPayload: config.wssMaxMessageSize,
@@ -118,9 +119,41 @@ server.listen(PORT, () => {
     // RULES(0): No two game servers should share the same endpoint
     //
     // NOTES(0): As of now, both servers run on the same process (and thread) here
-    const ffa = new GameServer(wss, "ffa", "Annihilation");
+    const gameserver = new GameServer(wss, "ffa", "Annihilation");
 
-    games.push(ffa);
+    let lastTick = 0;
+    let lastClientCount = 0;
+    let lastAiCount = 0;
+    let lastzIndex = 0;
+    
+    setInterval(() => {
+        let tps = gameserver.tick - lastTick;
+        if(tps && tps < config.tps * 0.8 && gameserver.clients.size > 1) {
+            console.log("critical tps, logging, tps:", tps);
+            analytics.push({
+                clients: gameserver.clients.size,
+                clientsDiff: gameserver.clients.size - lastClientCount,
+                ais: gameserver.entities.AIs.length,
+                aisDiff: gameserver.entities.AIs.length - lastAiCount,
+                zIndex: gameserver.entities.zIndex,
+                zIndexDiff: gameserver.entities.zIndex - lastzIndex,
+                tps,
+                tpsRatio: tps / config.tps, 
+                tick: gameserver.tick,
+                uptime: process.uptime(),
+                resusage: process.resourceUsage(),
+                cpuusage: process.cpuUsage(),
+                memusage: process.memoryUsage()
+            })
+            fs.writeFileSync("./data/analytics.json", JSON.stringify(analytics));
+        }
+        lastTick = gameserver.tick;
+        lastClientCount = gameserver.clients.size;
+        lastAiCount = gameserver.entities.AIs.length;
+        lastzIndex = gameserver.entities.zIndex;
+    }, 1000);
+
+    games.push(gameserver);
 
     util.saveToLog("Servers up", "All servers booted up.", 0x37F554);
     util.log("Dumping endpoint -> gamemode routing table");

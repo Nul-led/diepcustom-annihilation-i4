@@ -1,6 +1,7 @@
 import Client from "../Client";
 import { tps } from "../config";
 import { ClientBound, Color, ColorsHexCode } from "../Const/Enums";
+import TankBody from "../Entity/Tank/TankBody";
 import { Entity } from "../Native/Entity";
 import Item from "./Item";
 import ItemDefinitions, { ItemDefinition, ItemId, RarityName } from "./ItemDefinitions";
@@ -49,6 +50,7 @@ export default class InventoryManager {
             this.client.notify("You can use items via the keybinds or drop they via keybind + shift", ColorsHexCode[Color.TeamRed], 20000);
             this.client.notify("To change the keybinds check the diep console (cmd: util_set_slot_keybinds)", ColorsHexCode[Color.TeamRed], 20000);
         }
+        if(item.definition.onPickup) item.definition.onPickup(this.client, item);
     }
 
     useItem(slot: number) {
@@ -81,10 +83,10 @@ export default class InventoryManager {
             .send();
     }
 
-    sendInventoryUpdate() {
+    sendInventoryUpdate(doShowInventoryOverwrite: boolean | null = null) {
         this.client.write()
             .u8(ClientBound.SetInventory)
-            .u8(Number(Entity.exists(this.client.camera?.cameraData.player)))
+            .u8(doShowInventoryOverwrite === null ? Number(Entity.exists(this.client.camera?.cameraData.player)) : Number(doShowInventoryOverwrite))
             .u8(Number(MAX_ITEMS))
             .send();
         for(let i = 0; i < MAX_ITEMS; ++i) this.sendSlotUpdate(i);

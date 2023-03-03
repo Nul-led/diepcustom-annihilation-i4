@@ -90,6 +90,45 @@
             z-index: 1000;
           }
 
+          #scoreboard {
+            font-size: 0.9vw;
+            pointer-events: none;
+            background-color: rgba(0, 0, 0, 0.33);
+            position: absolute;
+            top: 30%;
+            left: 1%;
+            width: auto;
+            height: auto;
+            align-items: center;
+            justify-content: center;
+            display: none;
+            flex-direction: column;
+            border: 2px solid black;
+            border-radius: 10px;
+            z-index: 1000;
+          }
+
+          .entry {
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            border-bottom: 2px solid black;
+            box-sizing: border-box;
+            padding: 10px;
+          }
+
+          .entry > img {
+            margin-block: 5%;
+            max-width: 30px;
+            max-height: 30px;
+          }
+
+          .entry:last-child {
+            border-bottom: none;
+          }
+
           .item {
             align-items: center;
             justify-content: center;
@@ -128,6 +167,10 @@
     <body>
         <div id="inventory">
           Inventory
+        </div>
+
+        <div id="scoreboard">
+          Scoreboard
         </div>
 
         <span id="loading">Loading...</span>

@@ -67,11 +67,11 @@ const ItemDefinitions: Record<ItemId, ItemDefinition> = {
         name: ItemName.transformTank,
         rarityName: RarityName.Epic,
         onPickup: (client: Client, item: Item) => {
-            client.notify("You may now use this item to transform to the special tank 'The Sun'. This item has unlimited uses.");
+            client.notify("You may now use this item to transform to the special tank 'Vortex'. This item has unlimited uses.");
         },
         onUse: (client: Client, slot: number) => {
-            if(!client.camera?.cameraData.player || !(client.camera.cameraData.player instanceof TankBody)) return;
-            client.camera.cameraData.player.setTank(DevTank.TheSun);
+            if(!client.camera?.cameraData.player || !(client.camera.cameraData.player instanceof TankBody) || client.camera.cameraData.player.currentTank === DevTank.Vortex) return;
+            client.camera.cameraData.player.setTank(DevTank.Vortex);
         }
     },
     "1": {
