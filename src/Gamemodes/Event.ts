@@ -24,7 +24,7 @@ const ARENA_SIZE = 16000;
 const BASE_SIZE = ARENA_SIZE / 8;
 
 const NEXUS_CONFIG: NexusConfig = {
-    health: 100000,
+    health: 69000000,
     shield: 10000,
     size: 150
 }
