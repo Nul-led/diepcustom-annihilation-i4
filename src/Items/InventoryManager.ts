@@ -16,7 +16,7 @@ const rarity: Record<RarityName, number> = {
 
 export default class InventoryManager {
     public client: Client;
-    public slots: ItemDefinition[] = [ItemDefinitions[ItemId.transformTank]];
+    public slots: ItemDefinition[] = [];
     public isFirstItem: boolean = true;
 
     constructor(client: Client) {

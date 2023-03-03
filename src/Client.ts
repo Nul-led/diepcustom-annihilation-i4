@@ -40,7 +40,6 @@ import { CameraFlags, ClientBound, ArenaFlags, InputFlags, NameFlags, ServerBoun
 import { AI, AIState, Inputs } from "./Entity/AI";
 import AbstractBoss from "./Entity/Boss/AbstractBoss";
 import { executeCommand } from "./Const/Commands";
-import LivingEntity from "./Entity/Live";
 import EventArena from "./Gamemodes/Event";
 import InventoryManager from "./Items/InventoryManager";
 import TeamBase from "./Entity/Misc/TeamBase";
@@ -120,7 +119,7 @@ export default class Client {
     public inputs: ClientInputs = new ClientInputs(this);
 
     /** Current game server. */
-    private game: GameServer;
+    public game: GameServer;
     /** Inner websocket connection. */
     public ws: WebSocket;
     /** Client's camera entity. */
@@ -383,7 +382,23 @@ export default class Client {
                     }
                 }
                 if ((flags & InputFlags.suicide) && (!player.deletionAnimation || !player.deletionAnimation)) {
-                    if (this.accessLevel >= config.AccessLevel.BetaAccess || (this.game.arena.arenaData.values.flags & ArenaFlags.canUseCheats)) {
+                    if(this.spawnBase) {
+                        const playerPos = player.positionData;
+                        const playerPhysics = player.physicsData;
+                        const basePos = this.spawnBase.positionData;
+                        const basePhysics = this.spawnBase.physicsData;
+                        const dX = util.constrain(playerPos.x, basePos.x - basePhysics.size / 2, basePos.x + basePhysics.size / 2) - playerPos.x;
+                        const dY = util.constrain(playerPos.y, basePos.y - basePhysics.width / 2, basePos.y + basePhysics.width / 2) - playerPos.y;
+                        const isInBase = dX ** 2 + dY ** 2 <= playerPhysics.sides ** 2;
+                        if(isInBase) {
+                            this.setHasCheated(true);
+                        
+                            this.notify("You've killed " + (player.nameData.values.name === "" ? "an unnamed tank" : player.nameData.values.name));
+                            camera.cameraData.killedBy = player.nameData.values.name;
+                            player.destroy();
+                        }
+                    }
+                    else if (this.accessLevel >= config.AccessLevel.BetaAccess || (this.game.arena.arenaData.values.flags & ArenaFlags.canUseCheats)) {
                         this.setHasCheated(true);
                         
                         this.notify("You've killed " + (player.nameData.values.name === "" ? "an unnamed tank" : player.nameData.values.name));
@@ -531,12 +546,6 @@ export default class Client {
 
     /** Defines whether the player used cheats or not. This also defines whether the name is highlighted or not. */
     public setHasCheated(value: boolean) {
-        const player = this.camera?.cameraData.values.player;
-        if (player && player.nameData) {
-            if (value) player.nameData.flags |= NameFlags.highlightedName;
-            else player.nameData.flags &= ~NameFlags.highlightedName;
-        }
-
         this.devCheatsUsed = value;
     }
 

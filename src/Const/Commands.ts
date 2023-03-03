@@ -21,7 +21,7 @@ import AutoTurret from "../Entity/Tank/AutoTurret";
 import Bullet from "../Entity/Tank/Projectile/Bullet";
 import TankBody from "../Entity/Tank/TankBody";
 import { Entity, EntityStateFlags } from "../Native/Entity";
-import { saveToVLog } from "../util";
+import { removeFast, saveToVLog } from "../util";
 import { Stat, StatCount, StyleFlags, Tank } from "./Enums";
 import { getTankByName } from "./TankDefinitions"
 
@@ -38,7 +38,11 @@ export const enum CommandID {
     adminSummon = "admin_summon",
     adminKillAll = "admin_kill_all",
     adminKillEntity = "admin_kill_entity",
-    adminCloseArena = "admin_close_arena"
+    adminCloseArena = "admin_close_arena",
+    adminKickPlayer = "admin_kick_player",
+    adminBanPlayer = "admin_ban_player",
+    adminBroadcastMsg = "admin_broadcast_msg",
+    adminDeleteScoreboardEntry = "admin_delete_scoreboard_entry"
 }
 
 export interface CommandDefinition {
@@ -140,6 +144,32 @@ export const commandDefinitions = {
     admin_close_arena: {
         id: CommandID.adminCloseArena,
         description: "Closes the current arena",
+        permissionLevel: AccessLevel.FullAccess,
+        isCheat: false
+    },
+    admin_kick_player: {
+        id: CommandID.adminKickPlayer,
+        description: "Kicks the closest player with a given name (or '*' to match all)",
+        usage: "[name]",
+        permissionLevel: AccessLevel.FullAccess,
+        isCheat: false
+    },
+    admin_ban_player: {
+        id: CommandID.adminBanPlayer,
+        description: "Bans the closest player with a given name (or '*' to match all)",
+        usage: "[name]",
+        permissionLevel: AccessLevel.FullAccess,
+        isCheat: false
+    },
+    admin_broadcast_msg: {
+        id: CommandID.adminBroadcastMsg,
+        usage: "[...msg]",
+        permissionLevel: AccessLevel.FullAccess,
+        isCheat: false
+    },
+    admin_delete_scoreboard_entry: {
+        id: CommandID.adminDeleteScoreboardEntry,
+        usage: "[entry]",
         permissionLevel: AccessLevel.FullAccess,
         isCheat: false
     }
@@ -296,6 +326,44 @@ export const commandCallbacks = {
 			const entity = game.entities.inner[id];
 			if (Entity.exists(entity) && entity instanceof TEntity) entity.healthData.health = 0;
 		}
+    },
+    admin_kick_player: (client: Client, nameArg: string) => {
+        const player = client.camera?.cameraData.player;
+        if (!Entity.exists(player) || !(player instanceof TankBody)) return;
+        let closest = null;
+        for(const c of client.game.clients) {
+            if(!c.camera?.cameraData.player || !(c.camera.cameraData.player instanceof TankBody) || c.camera.cameraData.player === player) continue;
+            if(c.camera.cameraData.player.nameData.name !== nameArg && nameArg !== "*") continue;
+            const distance = Math.sqrt(c.camera.cameraData.player.getWorldPosition().distanceToSQ(player.getWorldPosition()));
+            if(closest && closest.distance < distance) continue;
+            closest = { client: c, distance };
+        }
+        closest?.client.terminate();
+    },
+    admin_ban_player: (client: Client, nameArg: string) => {
+        const player = client.camera?.cameraData.player;
+        if (!Entity.exists(player) || !(player instanceof TankBody)) return;
+        let closest = null;
+        for(const c of client.game.clients) {
+            if(!c.camera?.cameraData.player || !(c.camera.cameraData.player instanceof TankBody) || c.camera.cameraData.player === player) continue;
+            if(c.camera.cameraData.player.nameData.name !== nameArg && nameArg !== "*") continue;
+            const distance = Math.sqrt(c.camera.cameraData.player.getWorldPosition().distanceToSQ(player.getWorldPosition()));
+            if(closest && closest.distance < distance) continue;
+            closest = { client: c, distance };
+        }
+        closest?.client.ban();
+    },
+    admin_delete_scoreboard_entry: (client: Client, entryArg: string) => {
+        const entry = parseInt(entryArg);
+        if(isNaN(entry) || entry >= client.game.scoreboard.length) return;
+        removeFast(client.game.scoreboard, entry);
+        client.game.updateGlobalScoreboard();
+    },
+    admin_broadcast_msg: (client: Client, ...msgArg: string[]) => {
+        if(!client.camera?.game) return;
+        for(const c of client.camera.game.clients) {
+            c.notify(msgArg.join(" "), 0xFF00FF, 20000);
+        }
     }
 } as Record<CommandID, CommandCallback>
 

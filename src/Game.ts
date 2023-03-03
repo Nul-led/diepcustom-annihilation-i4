@@ -236,7 +236,14 @@ export default class GameServer {
         this.broadcast().vu(ClientBound.PlayerCount).vu(GameServer.globalPlayerCount).send();
     }
 
-    public updateGlobalScoreboard(entry: any) {
+    public updateGlobalScoreboard(entry?: any) {
+        if(!entry) {
+            writeFileSync("./data/scoreboard.json", JSON.stringify(this.scoreboard));
+            for(const client of this.clients) {
+                client.sendScoreboard(client.isShowingGlobalScoreboard);
+            }
+            return;
+        }
         const existingEntryIdx = this.scoreboard.findIndex(({ name }) => name === entry.name);
         if(existingEntryIdx === -1) {
             this.scoreboard.push(entry);
