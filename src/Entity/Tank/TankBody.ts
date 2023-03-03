@@ -238,7 +238,7 @@ export default class TankBody extends LivingEntity implements BarrelBase {
             if (this.cameraEntity.cameraData.player === this) {
                 this.cameraEntity.cameraData.deathTick = this.game.tick;
                 this.cameraEntity.cameraData.respawnLevel = Math.min(Math.max(this.cameraEntity.cameraData.values.level - 1, 1), Math.floor(Math.sqrt(this.cameraEntity.cameraData.values.level) * 3.2796));
-                if(!this.game.scoreboard.length || this.game.scoreboard[this.game.scoreboard.length - 1].score < this.cameraEntity.cameraData.score) this.game.updateGlobalScoreboard({ name: this.nameData.name, score: this.cameraEntity.cameraData.score });
+                if(!this.game.scoreboard.length || this.game.scoreboard[this.game.scoreboard.length - 1].score <= this.cameraEntity.cameraData.score) this.game.updateGlobalScoreboard({ name: this.nameData.name, score: this.cameraEntity.cameraData.score });
             }
 
             // Wipe this nonsense
